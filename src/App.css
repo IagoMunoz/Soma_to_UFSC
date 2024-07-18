@@ -1,9 +1,9 @@
 .App {
   display: flex;
   flex-direction: column;
-  height: 95vh; /* Ajusta a altura para ser a da viewport */
-  margin: 0; /* Remove qualquer margem externa */
-  overflow: hidden; /* Impede rolagem */
+  height: 95vh;
+  margin: 0;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -26,35 +26,35 @@
   font-weight: bold;
   font-size: 14px;
   text-align: justify;
-  margin: 0 30px; /* Ajuste para evitar overflow */
-  overflow: hidden; /* Evita que o texto cause rolagem */
+  margin: 0 30px;
+  overflow: hidden;
 }
 
 .App-navbar {
   background-color: #ffffff;
-  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 0; /* Ajuste de padding conforme necessário */
+  padding: 12px 0;
 }
 
 .topnavbar {
   background-color: #ffffff;
-  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 12px 0; /* Ajuste de padding conforme necessário */
+  padding: 12px 0;
   margin-left: 16%;
   margin-right: 16%;
 }
 
 .botnavbar {
   background-color: #ffffff;
-  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,14 +65,14 @@
 }
 
 .App-inter {
-  flex: 1 1 auto; /* Cresce para preencher o espaço disponível */
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
-  align-items: center; /* Centraliza o conteúdo verticalmente */
+  align-items: center;
   
-  margin: 0 12px; /* Margem horizontal ajustada para evitar overflow */
-  box-sizing: border-box; /* Inclui padding e bordas no cálculo de largura/altura */
-  overflow: hidden; /* Impede qualquer rolagem interna */
+  margin: 0 12px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 @media (max-width: 720px){
   .App-inter {
@@ -86,9 +86,9 @@
   margin: 12px;
   border: 2px solid #000000;
   border-radius: 6%;
-  padding: 15px; /* Adiciona espaço interno */
-  box-shadow: inset 0 0 0 2px #FFF; /* Cria uma borda interna branca */
-  box-sizing: border-box; /* Garante que padding e borda sejam incluídos no cálculo da dimensão */
+  padding: 15px;
+  box-shadow: inset 0 0 0 2px #FFF;
+  box-sizing: border-box;
 }
 
 .App-input, .App-result {
@@ -98,8 +98,8 @@
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 24px;
-  margin: 2% 0; /* Ajusta as margens existentes */
-  padding: 10px; /* Adiciona um padding para espaço interno */
+  margin: 2% 0;
+  padding: 10px;
 }
 
 
@@ -109,7 +109,7 @@
   font-size: 24px;
   text-align: center;
   border-radius: 12px;
-  margin: 8px 15%; /* Ajuste de margem para garantir que caibam na tela */
+  margin: 8px 15%;
 }
 
 .input-button {
@@ -119,7 +119,7 @@
   text-align: center;
   border-radius: 12px;
   margin-right: 25%;
-  margin-left: 25%; /* Ajuste de margem para garantir que caibam na tela */
+  margin-left: 25%;
 }
 
 .input-button2 {
@@ -129,7 +129,7 @@
   text-align: center;
   border-radius: 12px;
   margin-right: 25%;
-  margin-left: 25%; /* Ajuste de margem para garantir que caibam na tela */
+  margin-left: 25%;
 }
 
 @media (max-width: 720px){

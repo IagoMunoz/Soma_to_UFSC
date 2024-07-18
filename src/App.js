@@ -12,6 +12,17 @@ function App() {
   const retryButtonRef = useRef(null);
 
   useEffect(() => {
+    const savedVisibility = localStorage.getItem('isVisible');
+    if (savedVisibility !== null) {
+      setIsVisible(JSON.parse(savedVisibility));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('isVisible', JSON.stringify(isVisible));
+  }, [isVisible]);
+
+  useEffect(() => {
     if (showResults) {
       retryButtonRef.current.focus();
     } else {
@@ -19,7 +30,6 @@ function App() {
     }
   }, [showResults]);
 
-  
   const toggleTextVisibility = () => {
     setIsVisible(!isVisible); // Alterna a visibilidade dos textos
   };
@@ -37,7 +47,7 @@ function App() {
 
   function converterParaBinario(numero, comprimento) {
     let binario = numero.toString(2);
-  
+
     while (binario.length < comprimento) {
       binario = '0' + binario;
     }
@@ -47,20 +57,20 @@ function App() {
 
   function contarCertos(binario) {
     let contador = 0;
-    
+
     for (let i = 0; i < binario.length; i++) {
       if (binario[i] === '1') {
         contador++;
       }
     }
-    
+
     return contador;
   }
 
   function compararBinarios(binCertos, binMarcados) {
     let contAcertos = 0;
     let contErros = 0;
-  
+
     for (let i = 0; i < binCertos.length; i++) {
       if (binCertos[i] === '1' && binMarcados[i] === '1') {
         contAcertos++;
@@ -68,29 +78,11 @@ function App() {
         contErros++;
       }
     }
-  
+
     return [contAcertos, contErros];
   }
-  
 
   const calculate = () => {
-
-    /*
-    P – Pontuação do candidato na questão
-    NP – Número de proposições da questão
-    NTPC – Número total de proposições corretas na questão
-    NPC – Número de proposições corretas consideradas corretas pelo candidato
-    NPI – Número de proposições incorretas consideradas corretas pelo candidato
-
-    se NPC > NPI
-
-    P = (NP - (NPTC - (NPC - NPI))) / NP
-
-    caso NPC <=NPI
-
-    P = 0 
-    */
-
     const numItens = parseInt(numItensRef.current.value);
     const somaAlternativas = parseInt(somaAlternativasRef.current.value);
     const somaAssinalados = parseInt(somaAssinaladosRef.current.value);
@@ -107,15 +99,13 @@ function App() {
       let NTPC = contarCertos(binAlte);
       let [NPC, NPI] = compararBinarios(binAlte, binAssi);
 
-      
-
       if (NPC > NPI) {
         let P = (NP - (NTPC - (NPC - NPI))) / NP;
         let pREdondo = P.toFixed(2);
         if (pREdondo === "1.00") {
           strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Nota cheia, Mandou bem!</p>
         } else {
-          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
+          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
         }
       } else if (NPC === NPI) {
         strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</p>;
@@ -131,8 +121,6 @@ function App() {
     }
   };
 
-  
-
   const resetForm = () => {
     setShowResults(false);
   };
@@ -143,11 +131,10 @@ function App() {
         <topnavbar className="topnavbar">
           <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility}
             style={{ cursor: 'pointer' }}></img>
-          {isVisible && <p class = "App-intro">Clique na logo para ocultar os textos.<br>
-          </br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular</p>}
+          {isVisible && <p class="App-intro">Clique na logo para ocultar os textos.<br></br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular</p>}
         </topnavbar>
         <botnavbar className="botnavbar">
-          {isVisible && <p class = "App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
+          {isVisible && <p class="App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
             de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.</p>}
         </botnavbar>
       </navbar>
