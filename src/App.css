@@ -14,6 +14,12 @@
   border: 2px solid #000000;
   border-radius: 25%;
 }
+@media (max-width: 720px){
+  .App-logo {
+    width: 48px;
+    height: 48px;
+  }
+}
 
 .App-intro {
   font-family: 'Courier New', serif;
@@ -28,10 +34,34 @@
   background-color: #ffffff;
   flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0; /* Ajuste de padding conforme necessário */
+}
+
+.topnavbar {
+  background-color: #ffffff;
+  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 12px 0; /* Ajuste de padding conforme necessário */
+  margin-left: 16%;
+  margin-right: 16%;
+}
+
+.botnavbar {
+  background-color: #ffffff;
+  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  margin-left: 13%;
+  margin-right: 13%;
 }
 
 .App-inter {
@@ -39,11 +69,18 @@
   display: flex;
   justify-content: center;
   align-items: center; /* Centraliza o conteúdo verticalmente */
-
+  
   margin: 0 12px; /* Margem horizontal ajustada para evitar overflow */
   box-sizing: border-box; /* Inclui padding e bordas no cálculo de largura/altura */
   overflow: hidden; /* Impede qualquer rolagem interna */
 }
+@media (max-width: 720px){
+  .App-inter {
+    align-items: flex-start;
+  }
+}
+
+
 
 .App-quadro, .App-quadro-result {
   margin: 12px;

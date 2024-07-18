@@ -19,9 +19,6 @@ function App() {
     }
   }, [showResults]);
 
-  function Navbar({ logo }) {
-    const [isTextVisible, setIsTextVisible] = useState(true);
-  }
   
   const toggleTextVisibility = () => {
     setIsVisible(!isVisible); // Alterna a visibilidade dos textos
@@ -146,10 +143,11 @@ function App() {
         <topnavbar className="topnavbar">
           <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility}
             style={{ cursor: 'pointer' }}></img>
-          {isVisible && <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>}
+          {isVisible && <p class = "App-intro">Clique na logo para ocultar os textos.</p>}
         </topnavbar>
         <botnavbar className="botnavbar">
-          {isVisible && <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>}
+          {isVisible && <p class = "App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
+            de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.</p>}
         </botnavbar>
       </navbar>
       <interface class="App-inter">
