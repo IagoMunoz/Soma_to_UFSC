@@ -99,6 +99,11 @@
 }
 
 .App-quadro-result {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Courier New', serif;
+  font-weight: bold;
   margin-top: 12px;
   margin-bottom: 12px;
   margin-right: 12px;
