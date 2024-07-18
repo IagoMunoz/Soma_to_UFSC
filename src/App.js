@@ -112,9 +112,9 @@ function App() {
         let P = (NP - (NTPC - (NPC - NPI))) / NP;
         let pREdondo = P.toFixed(2);
         if (pREdondo === "1.00") {
-          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Nota cheia, Mandou bem!</p>
+          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Nota cheia, Mandou bem!</p>
         } else {
-          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
+          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
         }
       } else if (NPC === NPI) {
         strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</p>;
