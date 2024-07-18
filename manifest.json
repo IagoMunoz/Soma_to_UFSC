@@ -1,6 +1,11 @@
 {
   "short_name": "Somatorio",
   "name": "Somatorio",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "https://iagomunoz.github.io/Soma_to_UFSC/",
+  "start_url": "https://iagomunoz.github.io/Soma_to_UFSC/index.html",
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,9 +22,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
