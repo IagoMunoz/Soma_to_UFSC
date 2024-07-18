@@ -93,43 +93,43 @@ function App() {
     const numItens = parseInt(numItensRef.current.value);
     const somaAlternativas = parseInt(somaAlternativasRef.current.value);
     const somaAssinalados = parseInt(somaAssinaladosRef.current.value);
-  
-    if (numItens >= 1 && numItens <= 7 && somaAlternativas >= 1 && somaAlternativas 
-        <= 99 && somaAssinalados >= 1 && somaAssinalados <= 99) {
-  
-          const NP = numItens;
-          const somaAlte = somaAlternativas;
-          const somaAssi = somaAssinalados;
-  
-          let binAlte = converterParaBinario(somaAlte, NP);
-          let binAssi = converterParaBinario(somaAssi, NP);
+    let strResu;
 
-          let NTPC = contarCertos(binAlte);
-          
-          let [NPC, NPI] = compararBinarios(binAlte, binAssi);
-          
-          if (NPC > NPI) {
-            let P = (NP - (NTPC - (NPC - NPI))) / NP;
-            let pREdondo = P.toFixed(2);
-            if (pREdondo === 1.00) {
-              setResult(`Resultado: ${pREdondo} Nota cheia, Mandou bem!`);
-              setShowResults(true);
-            } else{
-              setResult(`Resultado: ${pREdondo} Parabens, cada decimo importa!!!`);
-              setShowResults(true);
-            }
-          } else if(NPC === NPI) {
-            setResult('Resultado 0. A quantidade de itens incorretos se iguala a de corretos.');
-            setShowResults(true);
-          } else {
-            setResult('Resultado 0. A quantidade de itens incorretos supera a de corretos.');
-            setShowResults(true);
-          }
+    if (numItens >= 1 && numItens <= 7 && somaAlternativas >= 1 && somaAlternativas <= 99 && somaAssinalados >= 1 && somaAssinalados <= 99) {
+      const NP = numItens;
+      const somaAlte = somaAlternativas;
+      const somaAssi = somaAssinalados;
+
+      let binAlte = converterParaBinario(somaAlte, NP);
+      let binAssi = converterParaBinario(somaAssi, NP);
+
+      let NTPC = contarCertos(binAlte);
+      let [NPC, NPI] = compararBinarios(binAlte, binAssi);
+
+      
+
+      if (NPC > NPI) {
+        let P = (NP - (NTPC - (NPC - NPI))) / NP;
+        let pREdondo = P.toFixed(2);
+        if (pREdondo === "1.00") {
+          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Nota cheia, Mandou bem!</p>
         } else {
-          setResult('Erro: Um ou mais valores estão fora dos limites.');
-          setShowResults(true);
-        } 
+          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
+        }
+      } else if (NPC === NPI) {
+        strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</p>;
+      } else {
+        strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos supera a de corretos.</p>;
+      }
+      setResult(strResu);
+      setShowResults(true);
+    } else {
+      strResu = <p class="App-input">Erro: Um ou mais valores<br></br>se encontrão fora dos limites.</p>
+      setResult(strResu);
+      setShowResults(true);
+    }
   };
+
   
 
   const resetForm = () => {
@@ -137,43 +137,45 @@ function App() {
   };
 
   return (
-    <app>
-      <navbar className="App-navbar">
-        <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility} />
+    <app class="App">
+      <navbar class="App-navbar">
+        <img src={logo} class="App-logo" alt="logo" onClick={toggleTextVisibility} />
         {isTextVisible && (
-          <p className="App-intro">
+          <p class="App-intro">
             Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
             de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.
           </p>
         )}
       </navbar>
-      <interface className="App-inter">
+      <interface class="App-inter">
         {!showResults ? (
-          <quadro className="App-quadro">
-            <div className="App-input">
+          <quadro class="App-quadro">
+            <div class="App-input">
               <label htmlFor="numItens">Número de itens da questão:</label>
-              <input className="input" type="number" id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
+              <input class="input" type="number" id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
             </div>
-            <div className="App-input">
+            <div class="App-input">
               <label htmlFor="somaAlternativas">Soma das alternativas corretas:</label>
-              <input className="input" type="number" id="somaAlternativas" name="somaAlternativas" min="1" max="99" pattern="[0-9]*" ref={somaAlternativasRef} onKeyDown={(e) => handleEnterKey(e, somaAssinaladosRef)} />
+              <input class="input" type="number" id="somaAlternativas" name="somaAlternativas" min="1" max="99" pattern="[0-9]*" ref={somaAlternativasRef} onKeyDown={(e) => handleEnterKey(e, somaAssinaladosRef)} />
             </div>
-            <div className="App-input">
+            <div class="App-input">
               <label htmlFor="somaAssinalados">Soma dos valores assinalados por você:</label>
-              <input className="input" type="number" id="somaAssinalados" name="somaAssinalados" min="1" max="99" pattern="[0-9]*" ref={somaAssinaladosRef} onKeyDown={(e) => handleEnterKey(e, null, calculate)} />
+              <input class="input" type="number" id="somaAssinalados" name="somaAssinalados" min="1" max="99" pattern="[0-9]*" ref={somaAssinaladosRef} onKeyDown={(e) => handleEnterKey(e, null, calculate)} />
             </div>
-            <div className="App-input">
-              <button className="input-button" onClick={calculate}>
+            <div class="App-input">
+              <button class="input-button" onClick={calculate}>
                 Calcular
               </button>
             </div>
           </quadro>
         ) : (
-          <quadro className="App-quadro-result">
-            <p className="App-result">{result}</p>
-            <button className="input-button" ref={retryButtonRef} onClick={resetForm} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
-              Calcular novamente
-            </button>
+          <quadro class="App-quadro-result">
+            {result}
+            <div class="App-input">
+              <button class="input-button2" ref={retryButtonRef} onClick={resetForm} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
+                Calcular <br></br> novamente
+              </button>
+            </div>
           </quadro>
         )}
       </interface>

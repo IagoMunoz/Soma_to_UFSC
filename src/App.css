@@ -1,111 +1,102 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  height: 95vh; /* Ajusta a altura para ser a da viewport */
+  margin: 0; /* Remove qualquer margem externa */
+  overflow: hidden; /* Impede rolagem */
   text-align: center;
 }
 
 .App-logo {
   width: 128px;
   height: 128px;
-  border-radius: 25%;
   cursor: pointer;
   border: 2px solid #000000;
+  border-radius: 25%;
 }
-
 
 .App-intro {
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 14px;
   text-align: justify;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin: 0 30px; /* Ajuste para evitar overflow */
+  overflow: hidden; /* Evita que o texto cause rolagem */
 }
 
 .App-navbar {
   background-color: #ffffff;
-  min-height: 144px;
+  flex: 0 0 auto; /* Navbar size is based on content, does not grow or shrink */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 12px;
+  padding: 12px 0; /* Ajuste de padding conforme necessário */
 }
 
 .App-inter {
+  flex: 1 1 auto; /* Cresce para preencher o espaço disponível */
   display: flex;
-  margin-top: 8%;
-  margin-left: 25%;
-  margin-right: 25%;
   justify-content: center;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+
+  margin: 0 12px; /* Margem horizontal ajustada para evitar overflow */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo de largura/altura */
+  overflow: hidden; /* Impede qualquer rolagem interna */
 }
 
-.App-quadro {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-right: 12px;
-  margin-left: 12px;
+.App-quadro, .App-quadro-result {
+  margin: 12px;
+  border: 2px solid #000000;
+  border-radius: 6%;
+  padding: 15px; /* Adiciona espaço interno */
+  box-shadow: inset 0 0 0 2px #FFF; /* Cria uma borda interna branca */
+  box-sizing: border-box; /* Garante que padding e borda sejam incluídos no cálculo da dimensão */
 }
 
-.App-input {
+.App-input, .App-result {
   display: flex;
   flex-direction: column;
   text-align: center;
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 24px;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 2% 0; /* Ajusta as margens existentes */
+  padding: 10px; /* Adiciona um padding para espaço interno */
 }
 
-
-@media (max-width: 720px){
-  .App-input {
-    font-size: 16px;
-  }
-}
 
 .input {
-  margin-top: 8px;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 12px;
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 24px;
   text-align: center;
   border-radius: 12px;
+  margin: 8px 15%; /* Ajuste de margem para garantir que caibam na tela */
 }
 
 .input-button {
-  margin-top: 8px;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-bottom: 12px;
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 24px;
   text-align: center;
   border-radius: 12px;
+  margin-right: 25%;
+  margin-left: 25%; /* Ajuste de margem para garantir que caibam na tela */
 }
 
-.App-result {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-family: 'Courier New', serif;
-    font-weight: bold;
-    font-size: 24px;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.App-quadro-result {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+.input-button2 {
   font-family: 'Courier New', serif;
   font-weight: bold;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-right: 12px;
-  margin-left: 12px;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+  margin-right: 25%;
+  margin-left: 25%; /* Ajuste de margem para garantir que caibam na tela */
+}
+
+@media (max-width: 720px){
+  .App-input, .App-result, .input, .input-button, .input-button2 {
+    font-size: 16px;
+  }
 }
