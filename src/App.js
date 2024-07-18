@@ -3,7 +3,7 @@ import logo from './logo.png';
 import './App.css';
 
 function App() {
-  const [isTextVisible, setIsTextVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const [result, setResult] = useState('');
   const [showResults, setShowResults] = useState(false);
   const numItensRef = useRef(null);
@@ -19,8 +19,12 @@ function App() {
     }
   }, [showResults]);
 
+  function Navbar({ logo }) {
+    const [isTextVisible, setIsTextVisible] = useState(true);
+  }
+  
   const toggleTextVisibility = () => {
-    setIsTextVisible(!isTextVisible);
+    setIsVisible(!isVisible); // Alterna a visibilidade dos textos
   };
 
   const handleEnterKey = (event, nextRef, action) => {
@@ -114,7 +118,7 @@ function App() {
         if (pREdondo === "1.00") {
           strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Nota cheia, Mandou bem!</p>
         } else {
-          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
+          strResu = <p class="App-input">Resultado: ${pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
         }
       } else if (NPC === NPI) {
         strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</p>;
@@ -138,14 +142,15 @@ function App() {
 
   return (
     <app class="App">
-      <navbar class="App-navbar">
-        <img src={logo} class="App-logo" alt="logo" onClick={toggleTextVisibility} />
-        {isTextVisible && (
-          <p class="App-intro">
-            Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
-            de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.
-          </p>
-        )}
+      <navbar className="App-navbar">
+        <topnavbar className="topnavbar">
+          <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility}
+            style={{ cursor: 'pointer' }}></img>
+          {isVisible && <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>}
+        </topnavbar>
+        <botnavbar className="botnavbar">
+          {isVisible && <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>}
+        </botnavbar>
       </navbar>
       <interface class="App-inter">
         {!showResults ? (
