@@ -11,6 +11,7 @@ function App() {
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
 
+  // Carregar o estado de localStorage ao inicializar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
     if (savedVisibility !== null) {
@@ -18,6 +19,7 @@ function App() {
     }
   }, []);
 
+  // Salvar o estado no localStorage sempre que isVisible mudar
   useEffect(() => {
     localStorage.setItem('isVisible', JSON.stringify(isVisible));
   }, [isVisible]);
