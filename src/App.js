@@ -111,14 +111,14 @@ function App() {
           if (NPC > NPI) {
             let P = (NP - (NTPC - (NPC - NPI))) / NP;
             let pREdondo = P.toFixed(2);
-            if (pREdondo == 1.00) {
+            if (pREdondo === 1.00) {
               setResult(`Resultado: ${pREdondo} Nota cheia, Mandou bem!`);
               setShowResults(true);
             } else{
               setResult(`Resultado: ${pREdondo} Parabens, cada decimo importa!!!`);
               setShowResults(true);
             }
-          } else if(NPC == NPI) {
+          } else if(NPC === NPI) {
             setResult('Resultado 0. A quantidade de itens incorretos se iguala a de corretos.');
             setShowResults(true);
           } else {
