@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  width: 128px;
+  height: 128px;
+  border-radius: 25%;
+  cursor: pointer;
+  border: 2px solid #000000;
+}
+
+
+.App-intro {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: justify;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.App-navbar {
+  background-color: #ffffff;
+  min-height: 144px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.App-inter {
+  display: flex;
+  margin-top: 8%;
+  margin-left: 25%;
+  margin-right: 25%;
+  justify-content: center;
+}
+
+.App-quadro {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.App-input {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+
+@media (max-width: 720px){
+  .App-input {
+    font-size: 16px;
+  }
+}
+
+.input {
+  margin-top: 8px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 12px;
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.input-button {
+  margin-top: 8px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 12px;
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.App-result {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Courier New', serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.App-quadro-result {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
