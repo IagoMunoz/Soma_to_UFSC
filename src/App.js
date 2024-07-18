@@ -11,6 +11,12 @@ function App() {
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
 
+  useEffect(() => {
+    if (isDesktopViewOnMobile()) {
+      alert("Please switch to mobile view for the best experience.");
+    }
+  }, []);
+
   // Carregar o estado de localStorage ao inicializar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
@@ -172,8 +178,23 @@ function App() {
           </quadro>
         )}
       </interface>
+      <footer class = "footer">
+        <button id="updateButton" class = "input-button3" onClick={() => window.location.reload()}>
+          Update Available
+        </button>
+      </footer>
     </app>
   );
 }
+
+function isMobileDevice() {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+function isDesktopViewOnMobile() {
+  const viewportWidth = window.innerWidth;
+  return isMobileDevice() && viewportWidth > 800;
+}
+
 
 export default App;
