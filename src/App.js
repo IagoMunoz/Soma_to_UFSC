@@ -143,7 +143,8 @@ function App() {
         <topnavbar className="topnavbar">
           <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility}
             style={{ cursor: 'pointer' }}></img>
-          {isVisible && <p class = "App-intro">Clique na logo para ocultar os textos.</p>}
+          {isVisible && <p class = "App-intro">Clique na logo para ocultar os textos.<br>
+          </br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular</p>}
         </topnavbar>
         <botnavbar className="botnavbar">
           {isVisible && <p class = "App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
