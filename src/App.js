@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import logo from './src/logo.png';
+import logo from './logo.png';
 import './App.css';
 
 function App() {
