@@ -1,14 +1,29 @@
+// src/serviceWorker.js
+const CACHE_NAME = 'your-app-cache-v1';
 
-export const registerServiceWorker = () => {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js').then(function (registration) {
-          // Registration was successful
-          //console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function (err) {
-          // registration failed :(
-          //console.log('ServiceWorker registration failed: ', err);
+self.addEventListener('install', event => {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+    self.skipWaiting();
+  }
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(event.request).then(response => {
+        return response || fetch(event.request).then(networkResponse => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
         });
       });
-    }
-  }
+    })
+  );
+});

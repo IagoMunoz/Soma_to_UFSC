@@ -22,5 +22,7 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "updateUrl": "https://iagomunoz.github.io/Soma_to_UFSC/public/manifest.json",
+  "version": "1.0.0"
 }
