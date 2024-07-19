@@ -189,10 +189,13 @@ function App() {
           </quadro>
         )}
       </interface>
-      <footer class="footer">
+      <upbtdiv class="upbtdiv">
         <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
           Update Available
         </button>
+      </upbtdiv>
+      <footer class ="footer">
+        <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
       </footer>
     </app>
   );

@@ -155,10 +155,11 @@
   }
 }
 
-.footer {
+.upbtdiv {
   display: flex;
   justify-content: center
 }
+
 .input-button3 {
   font-family: 'Courier New', serif;
   font-weight: bold;
@@ -173,4 +174,25 @@
   .input-button3 {
     display: flex;
   }
+}
+
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.ttfoot {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  
 }
