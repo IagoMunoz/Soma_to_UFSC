@@ -137,7 +137,10 @@ function App() {
         </topnavbar>
         <botnavbar className="botnavbar">
           {isVisible && <p class="App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
-            de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.</p>}
+            de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.<br></br>
+            Como baixar:<br></br>
+              Android: https://www.youtube.com/shorts/K_RhGbqzIGk<br></br>
+              AppleOS: https://www.youtube.com/shorts/Bm3VIOUe7ZY</p>}
         </botnavbar>
       </navbar>
       <interface class="App-inter">
