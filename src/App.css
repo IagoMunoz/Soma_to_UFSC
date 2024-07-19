@@ -157,7 +157,8 @@
 
 .upbtdiv {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  border: 2px solid #000000;
 }
 
 .input-button3 {
@@ -168,6 +169,7 @@
   border-radius: 12px;
   margin-right: 25%;
   margin-left: 25%;
+  margin-bottom: 12px;
   display: none;
 }
 @media (max-width: 480px){
