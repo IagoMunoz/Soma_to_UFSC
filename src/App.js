@@ -1,8 +1,10 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import logo from './logo.png';
 import './App.css';
+
 function App() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false); // Inicialmente invisível
   const [result, setResult] = useState('');
   const [showResults, setShowResults] = useState(false);
   const numItensRef = useRef(null);
@@ -11,22 +13,60 @@ function App() {
   const retryButtonRef = useRef(null);
 
   useEffect(() => {
+    async function checkForUpdates() {
+      try {
+        const response = await fetch('/version.txt');
+        const remoteVersion = await response.text();
+
+        const localVersion = '1.0.0'; // Defina a versão local atual
+        if (localVersion.trim() !== remoteVersion.trim()) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      } catch (error) {
+        console.error('Erro ao verificar atualizações:', error);
+      }
+    }
+
+    checkForUpdates();
+  }, []);
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller && registration.waiting) {
+              checkForUpdates();
+            }
+          };
+        };
+      })
+      .catch(error => {
+        console.error('Falha ao registrar o ServiceWorker:', error);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     if (isDesktopViewOnMobile()) {
       alert("Please switch to mobile view for the best experience.");
     }
   }, []);
 
-  // Carregar o estado de localStorage ao inicializar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
     if (savedVisibility !== null) {
       setIsVisible(JSON.parse(savedVisibility));
     }
   }, []);
-  // Salvar o estado no localStorage sempre que isVisible mudar
+
   useEffect(() => {
     localStorage.setItem('isVisible', JSON.stringify(isVisible));
   }, [isVisible]);
+
   useEffect(() => {
     if (showResults) {
       retryButtonRef.current.focus();
@@ -34,9 +74,11 @@ function App() {
       numItensRef.current.focus();
     }
   }, [showResults]);
+
   const toggleTextVisibility = () => {
-    setIsVisible(!isVisible); // Alterna a visibilidade dos textos
+    setIsVisible(!isVisible);
   };
+
   const handleEnterKey = (event, nextRef, action) => {
     if (event.key === 'Enter' || event.keyCode === 13) {
       event.preventDefault();
@@ -47,25 +89,33 @@ function App() {
       }
     }
   };
+
   function converterParaBinario(numero, comprimento) {
     let binario = numero.toString(2);
+
     while (binario.length < comprimento) {
       binario = '0' + binario;
     }
+
     return binario;
   }
+
   function contarCertos(binario) {
     let contador = 0;
+
     for (let i = 0; i < binario.length; i++) {
       if (binario[i] === '1') {
         contador++;
       }
     }
+
     return contador;
   }
+
   function compararBinarios(binCertos, binMarcados) {
     let contAcertos = 0;
     let contErros = 0;
+
     for (let i = 0; i < binCertos.length; i++) {
       if (binCertos[i] === '1' && binMarcados[i] === '1') {
         contAcertos++;
@@ -73,21 +123,27 @@ function App() {
         contErros++;
       }
     }
+
     return [contAcertos, contErros];
   }
+
   const calculate = () => {
     const numItens = parseInt(numItensRef.current.value);
     const somaAlternativas = parseInt(somaAlternativasRef.current.value);
     const somaAssinalados = parseInt(somaAssinaladosRef.current.value);
     let strResu;
+
     if (numItens >= 1 && numItens <= 7 && somaAlternativas >= 1 && somaAlternativas <= 99 && somaAssinalados >= 1 && somaAssinalados <= 99) {
       const NP = numItens;
       const somaAlte = somaAlternativas;
       const somaAssi = somaAssinalados;
+
       let binAlte = converterParaBinario(somaAlte, NP);
       let binAssi = converterParaBinario(somaAssi, NP);
+
       let NTPC = contarCertos(binAlte);
       let [NPC, NPI] = compararBinarios(binAlte, binAssi);
+
       if (NPC > NPI) {
         let P = (NP - (NTPC - (NPC - NPI))) / NP;
         let pREdondo = P.toFixed(2);
@@ -109,9 +165,11 @@ function App() {
       setShowResults(true);
     }
   };
+
   const resetForm = () => {
     setShowResults(false);
   };
+
   return (
     <app class="App">
       <navbar className="App-navbar">
@@ -157,11 +215,15 @@ function App() {
           </quadro>
         )}
       </interface>
-      <footer class = "footer">
-        <button id="updateButton" class = "input-button3" onClick={() => window.location.reload()}>
+      <upbtdiv class="upbtdiv">
+        <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
           Update Available
         </button>
-      </footer>
+        <footer class ="footer">
+          <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
+        </footer>
+      </upbtdiv>
+      
     </app>
   );
 }
