@@ -158,7 +158,6 @@
 .upbtdiv {
   display: flex;
   justify-content: center;
-  border: 2px solid #000000;
 }
 
 .input-button3 {
@@ -193,6 +192,7 @@
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 16px;
+  text-align: center;
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
