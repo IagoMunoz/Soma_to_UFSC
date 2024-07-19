@@ -17,11 +17,11 @@ function App() {
         registration.onupdatefound = () => {
           const installingWorker = registration.installing;
           installingWorker.onstatechange = () => {
-            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // Verificar se uma atualização está realmente disponível
-              if (registration.waiting) {
-                setIsVisible(true); // Mostrar o botão somente se uma atualização estiver disponível
-              }
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller && registration.waiting) {
+              // Uma atualização está disponível
+              setIsVisible(true);
+            } else {
+              setIsVisible(false); // Caso contrário, mantenha o botão invisível
             }
           };
         };
@@ -31,6 +31,7 @@ function App() {
       });
     }
   }, []);
+  
   
 
   useEffect(() => {
