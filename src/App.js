@@ -13,22 +13,22 @@ function App() {
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-              registration.onupdatefound = () => {
-                  const installingWorker = registration.installing;
-                  installingWorker.onstatechange = () => {
-                      if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                          setIsVisible(true);
-                      }
-                  };
-              };
-          })
-          .catch(error => {
-              console.error('Falha ao registrar o ServiceWorker:', error);
-          });
-  }
-}, []);
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // Um novo service worker está instalado e uma atualização está disponível
+              setIsVisible(true); // Aqui você deve definir a lógica para mostrar o botão
+            }
+          };
+        };
+      })
+      .catch(error => {
+        console.error('Falha ao registrar o ServiceWorker:', error);
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
@@ -193,10 +193,11 @@ function App() {
         <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
           Update Available
         </button>
+        <footer class ="footer">
+          <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
+        </footer>
       </upbtdiv>
-      <footer class ="footer">
-        <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
-      </footer>
+      
     </app>
   );
 }
