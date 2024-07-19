@@ -31,8 +31,12 @@ function App() {
       });
     }
   }, []);
-  
-  
+
+  useEffect(() => {
+    if (isDesktopViewOnMobile()) {
+      alert("Please switch to mobile view for the best experience.");
+    }
+  }, []);
 
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
