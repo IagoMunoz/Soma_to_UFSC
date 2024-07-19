@@ -1,39 +1,28 @@
 // src/sw.js
+
+// Import the Workbox libraries
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
 
-if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
+// Apply caching strategies
+workbox.routing.registerRoute(
+  ({request}) => request.destination === 'document',
+  new workbox.strategies.NetworkFirst()
+);
 
-  // Precache files
-  workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+// Force immediate updates for all resources, ensuring users get the latest version
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Forces the waiting service worker to become the active service worker
+});
 
-  // Cache JavaScript files
-  workbox.routing.registerRoute(
-    new RegExp('\\.js$'),
-    new workbox.strategies.NetworkFirst()
-  );
-
-  // Cache CSS files
-  workbox.routing.registerRoute(
-    /.*\.css$/,
-    new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'css-cache',
-    })
-  );
-
-  // Cache image files
-  workbox.routing.registerRoute(
-    /.*\.(?:png|jpg|jpeg|svg|gif)$/,
-    new workbox.strategies.CacheFirst({
-      cacheName: 'image-cache',
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxAgeSeconds: 7 * 24 * 60 * 60, // Cache for one week
-          maxEntries: 20, // Only cache 20 images
+self.addEventListener('activate', (event) => {
+  event.waitUntil(clients.claim()); // Allows the service worker to start controlling open clients
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          return caches.delete(cacheName); // Clears old caches
         })
-      ],
+      );
     })
   );
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
-}
+});
