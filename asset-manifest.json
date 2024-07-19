@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Soma_to_UFSC/static/css/main.d3229d4f.css",
-    "main.js": "/Soma_to_UFSC/static/js/main.85891bdb.js",
+    "main.js": "/Soma_to_UFSC/static/js/main.d5b6e185.js",
     "static/js/453.620ef83d.chunk.js": "/Soma_to_UFSC/static/js/453.620ef83d.chunk.js",
     "static/media/logo.png": "/Soma_to_UFSC/static/media/logo.7a796367e3b8c782db4f.png",
     "index.html": "/Soma_to_UFSC/index.html",
     "main.d3229d4f.css.map": "/Soma_to_UFSC/static/css/main.d3229d4f.css.map",
-    "main.85891bdb.js.map": "/Soma_to_UFSC/static/js/main.85891bdb.js.map",
+    "main.d5b6e185.js.map": "/Soma_to_UFSC/static/js/main.d5b6e185.js.map",
     "453.620ef83d.chunk.js.map": "/Soma_to_UFSC/static/js/453.620ef83d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d3229d4f.css",
-    "static/js/main.85891bdb.js"
+    "static/js/main.d5b6e185.js"
   ]
 }
