@@ -1,0 +1,200 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.App-logo {
+  width: 128px;
+  height: 128px;
+  cursor: pointer;
+  border: 2px solid #000000;
+  border-radius: 25%;
+}
+@media (max-width: 720px){
+  .App-logo {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.App-intro {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: justify;
+  margin: 0 30px;
+  overflow: hidden;
+}
+
+.App-navbar {
+  background-color: #ffffff;
+
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+}
+@media (max-width: 720px){
+  .App-navbar {
+    padding: 0px 0;
+  }
+}
+
+.topnavbar {
+  background-color: #ffffff;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  margin-left: 16%;
+  margin-right: 16%;
+}
+
+.botnavbar {
+  background-color: #ffffff;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  margin-left: 13%;
+  margin-right: 13%;
+}
+
+.App-inter {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+@media (max-width: 720px){
+  .App-inter {
+    align-items: flex-start;
+  }
+}
+
+
+
+.App-quadro {
+  margin: 12px;
+  border: 2px solid #000000;
+  border-radius: 6%;
+  padding: 15px;
+  box-shadow: inset 0 0 0 2px #FFF;
+  box-sizing: border-box;
+}
+
+.App-quadro-result {
+  margin: 12px;
+  margin-top: 25%;
+  margin-bottom: 30%;
+  border: 2px solid #000000;
+  border-radius: 6%;
+  padding: 15px;
+  box-shadow: inset 0 0 0 2px #FFF;
+  box-sizing: border-box;
+}
+
+.App-input, .App-result {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 2% 0;
+  padding: 10px;
+}
+
+
+.input {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 8px 15%;
+}
+
+.input-button {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+.input-button2 {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 12px;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+@media (max-width: 720px){
+  .App-input, .App-result, .input, .input-button, .input-button2 {
+    font-size: 16px;
+  }
+}
+
+.upbtdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.input-button3 {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 12px;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 12px;
+  display: none;
+}
+@media (max-width: 480px){
+  .input-button3 {
+    display: flex;
+  }
+}
+
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 8px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.ttfoot {
+  font-family: 'Courier New', serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  
+}
