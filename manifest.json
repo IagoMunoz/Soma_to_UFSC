@@ -5,8 +5,8 @@
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "https://github.com/IagoMunoz/Somatorio_UFSC",
-  "start_url": "https://github.com/IagoMunoz/Somatorio_UFSC",
-  
+  "start_url": "https://github.com/IagoMunoz/Somatorio_UFSC/index.html",
+
   "icons": [
     {
       "src": "favicon.ico",
