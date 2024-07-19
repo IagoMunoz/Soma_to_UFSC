@@ -3,7 +3,7 @@ import logo from './logo.png';
 import './App.css';
 
 function App() {
-  const [isVisible, setIsVisible] = useState(false); // Inicialmente invisível
+  const [isVisible, setIsVisible] = useState(true);
   const [result, setResult] = useState('');
   const [showResults, setShowResults] = useState(false);
   const numItensRef = useRef(null);
@@ -11,50 +11,7 @@ function App() {
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
 
-  async function checkForUpdates() {
-    try {
-      const response = await fetch('/version.txt');
-      const remoteVersion = await response.text();
-
-      const localVersion = '1.0.0'; // Defina a versão local atual
-      if (localVersion.trim() !== remoteVersion.trim()) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    } catch (error) {
-      console.error('Erro ao verificar atualizações:', error);
-    }
-  }
-
-  useEffect(() => {
-    checkForUpdates();
-  }, []);
-
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(registration => {
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing;
-          installingWorker.onstatechange = () => {
-            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller && registration.waiting) {
-              checkForUpdates();
-            }
-          };
-        };
-      })
-      .catch(error => {
-        console.error('Falha ao registrar o ServiceWorker:', error);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isDesktopViewOnMobile()) {
-      alert("Please switch to mobile view for the best experience.");
-    }
-  }, []);
-
+  // Carregar o estado de localStorage ao inicializar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
     if (savedVisibility !== null) {
@@ -62,6 +19,7 @@ function App() {
     }
   }, []);
 
+  // Salvar o estado no localStorage sempre que isVisible mudar
   useEffect(() => {
     localStorage.setItem('isVisible', JSON.stringify(isVisible));
   }, [isVisible]);
@@ -75,7 +33,7 @@ function App() {
   }, [showResults]);
 
   const toggleTextVisibility = () => {
-    setIsVisible(!isVisible);
+    setIsVisible(!isVisible); // Alterna a visibilidade dos textos
   };
 
   const handleEnterKey = (event, nextRef, action) => {
@@ -214,27 +172,11 @@ function App() {
           </quadro>
         )}
       </interface>
-      <upbtdiv class="upbtdiv">
-        <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
-          Update Available
-        </button>
-        <footer class ="footer">
+      <footer class ="footer">
           <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
         </footer>
-      </upbtdiv>
-      
     </app>
   );
 }
-
-function isMobileDevice() {
-  return /Mobi|Android/i.test(navigator.userAgent);
-}
-
-function isDesktopViewOnMobile() {
-  const viewportWidth = window.innerWidth;
-  return isMobileDevice() && viewportWidth > 800;
-}
-
 
 export default App;
