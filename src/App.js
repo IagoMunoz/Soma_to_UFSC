@@ -4,6 +4,7 @@ import './App.css';
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
+  const [updateAvailable, setUpdateAvailable] = useState(false);  // Estado para controlar a visibilidade do botão de update
   const [result, setResult] = useState('');
   const [showResults, setShowResults] = useState(false);
   const numItensRef = useRef(null);
@@ -12,8 +13,17 @@ function App() {
   const retryButtonRef = useRef(null);
 
   useEffect(() => {
-    if (isDesktopViewOnMobile()) {
-      alert("Please switch to mobile view for the best experience.");
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              setUpdateAvailable(true);
+            }
+          };
+        };
+      });
     }
   }, []);
 
@@ -178,10 +188,10 @@ function App() {
           </quadro>
         )}
       </interface>
-      <footer class = "footer">
-        <button id="updateButton" class = "input-button3" onClick={() => window.location.reload()}>
+      <footer class="footer">
+        {updateAvailable && <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
           Update Available
-        </button>
+        </button>}
       </footer>
     </app>
   );
@@ -195,6 +205,5 @@ function isDesktopViewOnMobile() {
   const viewportWidth = window.innerWidth;
   return isMobileDevice() && viewportWidth > 800;
 }
-
 
 export default App;
