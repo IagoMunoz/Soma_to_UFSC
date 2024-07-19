@@ -12,7 +12,6 @@ function App() {
   const somaAlternativasRef = useRef(null);
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
-
   
 
   useEffect(() => {
