@@ -13,6 +13,8 @@ function App() {
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
 
+  
+
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
     if (savedVisibility !== null) {
@@ -146,15 +148,15 @@ function App() {
         {!showResults ? (
           <quadro class="App-quadro">
             <div class="App-input">
-              <label htmlFor="numItens">Número de itens da questão:</label>
+              <label htmlFor="numItens">Número de itens:</label>
               <input class="input" type="number" id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
             </div>
             <div class="App-input">
-              <label htmlFor="somaAlternativas">Soma das alternativas corretas:</label>
+              <label htmlFor="somaAlternativas">Soma dos itens corretos:</label>
               <input class="input" type="number" id="somaAlternativas" name="somaAlternativas" min="1" max="99" pattern="[0-9]*" ref={somaAlternativasRef} onKeyDown={(e) => handleEnterKey(e, somaAssinaladosRef)} />
             </div>
             <div class="App-input">
-              <label htmlFor="somaAssinalados">Soma dos valores assinalados por você:</label>
+              <label htmlFor="somaAssinalados">Soma dos itens assinalados:</label>
               <input class="input" type="number" id="somaAssinalados" name="somaAssinalados" min="1" max="99" pattern="[0-9]*" ref={somaAssinaladosRef} onKeyDown={(e) => handleEnterKey(e, null, calculate)} />
             </div>
             <div class="App-input">
