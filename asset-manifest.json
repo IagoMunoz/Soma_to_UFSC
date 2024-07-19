@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Soma_to_UFSC/static/css/main.36a2f232.css",
-    "main.js": "/Soma_to_UFSC/static/js/main.03ae012b.js",
+    "main.css": "/Soma_to_UFSC/static/css/main.cf48faa0.css",
+    "main.js": "/Soma_to_UFSC/static/js/main.7bb10af0.js",
     "static/js/453.ed3810f9.chunk.js": "/Soma_to_UFSC/static/js/453.ed3810f9.chunk.js",
     "static/media/logo.png": "/Soma_to_UFSC/static/media/logo.7a796367e3b8c782db4f.png",
     "index.html": "/Soma_to_UFSC/index.html",
-    "main.36a2f232.css.map": "/Soma_to_UFSC/static/css/main.36a2f232.css.map",
-    "main.03ae012b.js.map": "/Soma_to_UFSC/static/js/main.03ae012b.js.map",
+    "main.cf48faa0.css.map": "/Soma_to_UFSC/static/css/main.cf48faa0.css.map",
+    "main.7bb10af0.js.map": "/Soma_to_UFSC/static/js/main.7bb10af0.js.map",
     "453.ed3810f9.chunk.js.map": "/Soma_to_UFSC/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.36a2f232.css",
-    "static/js/main.03ae012b.js"
+    "static/css/main.cf48faa0.css",
+    "static/js/main.7bb10af0.js"
   ]
 }
