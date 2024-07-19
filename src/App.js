@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import logo from './logo.png';
 import './App.css';
@@ -12,23 +11,23 @@ function App() {
   const somaAssinaladosRef = useRef(null);
   const retryButtonRef = useRef(null);
 
-  useEffect(() => {
-    async function checkForUpdates() {
-      try {
-        const response = await fetch('/version.txt');
-        const remoteVersion = await response.text();
+  async function checkForUpdates() {
+    try {
+      const response = await fetch('/version.txt');
+      const remoteVersion = await response.text();
 
-        const localVersion = '1.0.0'; // Defina a versão local atual
-        if (localVersion.trim() !== remoteVersion.trim()) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
-      } catch (error) {
-        console.error('Erro ao verificar atualizações:', error);
+      const localVersion = '1.0.0'; // Defina a versão local atual
+      if (localVersion.trim() !== remoteVersion.trim()) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
+    } catch (error) {
+      console.error('Erro ao verificar atualizações:', error);
     }
+  }
 
+  useEffect(() => {
     checkForUpdates();
   }, []);
 
