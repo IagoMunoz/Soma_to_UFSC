@@ -5,7 +5,7 @@ if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
 
   // Precache files
-  workbox.precaching.precacheAndRoute([{"revision":"b2cd3cd601d282014264e1cc5eb67c5d","url":"index.html"},{"revision":"9d05146942ed0d9b4a17c4377ac0b696","url":"static/css/main.c3c223a5.css"},{"revision":"1eda53d6c5f2119464b255eab2af7d1c","url":"static/js/453.ed3810f9.chunk.js"},{"revision":"d98eae77b4ced6c29d969d1575480b2c","url":"static/js/main.0331ce9a.js"}]);
+  workbox.precaching.precacheAndRoute([{"revision":"ce3c9aaa738ec0d3f544f5322825d7c6","url":"index.html"},{"revision":"9d05146942ed0d9b4a17c4377ac0b696","url":"static/css/main.c3c223a5.css"},{"revision":"1eda53d6c5f2119464b255eab2af7d1c","url":"static/js/453.ed3810f9.chunk.js"},{"revision":"fd593c4d6fd9848c814f47a64d802270","url":"static/js/main.48e51d6b.js"}]);
 
   // Cache JavaScript files
   workbox.routing.registerRoute(
