@@ -4,7 +4,6 @@ import './App.css';
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
-  const [updateAvailable, setUpdateAvailable] = useState(false);  // Estado para controlar a visibilidade do botão de update
   const [result, setResult] = useState('');
   const [showResults, setShowResults] = useState(false);
   const numItensRef = useRef(null);
@@ -14,20 +13,23 @@ function App() {
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(registration => {
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing;
-          installingWorker.onstatechange = () => {
-            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              setUpdateAvailable(true);
-            }
-          };
-        };
-      });
-    }
-  }, []);
+      navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+              registration.onupdatefound = () => {
+                  const installingWorker = registration.installing;
+                  installingWorker.onstatechange = () => {
+                      if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                          setIsVisible(true);
+                      }
+                  };
+              };
+          })
+          .catch(error => {
+              console.error('Falha ao registrar o ServiceWorker:', error);
+          });
+  }
+}, []);
 
-  // Carregar o estado de localStorage ao inicializar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
     if (savedVisibility !== null) {
@@ -35,7 +37,6 @@ function App() {
     }
   }, []);
 
-  // Salvar o estado no localStorage sempre que isVisible mudar
   useEffect(() => {
     localStorage.setItem('isVisible', JSON.stringify(isVisible));
   }, [isVisible]);
@@ -49,7 +50,7 @@ function App() {
   }, [showResults]);
 
   const toggleTextVisibility = () => {
-    setIsVisible(!isVisible); // Alterna a visibilidade dos textos
+    setIsVisible(!isVisible);
   };
 
   const handleEnterKey = (event, nextRef, action) => {
@@ -189,9 +190,9 @@ function App() {
         )}
       </interface>
       <footer class="footer">
-        {updateAvailable && <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
+        <button id="updateButton" class="input-button3" onClick={() => window.location.reload()}>
           Update Available
-        </button>}
+        </button>
       </footer>
     </app>
   );
@@ -205,5 +206,6 @@ function isDesktopViewOnMobile() {
   const viewportWidth = window.innerWidth;
   return isMobileDevice() && viewportWidth > 800;
 }
+
 
 export default App;
