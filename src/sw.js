@@ -20,20 +20,4 @@ if (workbox) {
       cacheName: 'css-cache',
     })
   );
-
-  // Cache image files
-  workbox.routing.registerRoute(
-    /.*\.(?:png|jpg|jpeg|svg|gif)$/,
-    new workbox.strategies.CacheFirst({
-      cacheName: 'image-cache',
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxAgeSeconds: 7 * 24 * 60 * 60, // Cache for one week
-          maxEntries: 20, // Only cache 20 images
-        })
-      ],
-    })
-  );
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
 }
