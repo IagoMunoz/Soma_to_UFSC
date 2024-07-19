@@ -1,20 +1,21 @@
+// src/sw.js
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
 
 if (workbox) {
-  console.log("Yay! Workbox is loaded 🎉");
+  console.log(`Yay! Workbox is loaded 🎉`);
 
   // Precache files
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
   // Cache JavaScript files
   workbox.routing.registerRoute(
-    /\.js$/,
+    new RegExp('\\.js$'),
     new workbox.strategies.NetworkFirst()
   );
 
   // Cache CSS files
   workbox.routing.registerRoute(
-    /\.css$/,
+    /.*\.css$/,
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'css-cache',
     })
@@ -22,7 +23,7 @@ if (workbox) {
 
   // Cache image files
   workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    /.*\.(?:png|jpg|jpeg|svg|gif)$/,
     new workbox.strategies.CacheFirst({
       cacheName: 'image-cache',
       plugins: [
@@ -34,5 +35,5 @@ if (workbox) {
     })
   );
 } else {
-  console.log("Boo! Workbox didn't load 😬");
+  console.log(`Boo! Workbox didn't load 😬`);
 }
