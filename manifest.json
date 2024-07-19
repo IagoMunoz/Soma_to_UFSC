@@ -4,8 +4,9 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "https://iagomunoz.github.io/Soma_to_UFSC/",
-  "start_url": "https://iagomunoz.github.io/Soma_to_UFSC/index.html",
+  "Scope": "https://github.com/IagoMunoz/Somatorio_UFSC",
+  "start_url": "https://github.com/IagoMunoz/Somatorio_UFSC",
+  
   "icons": [
     {
       "src": "favicon.ico",
@@ -22,7 +23,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "updateUrl": "https://iagomunoz.github.io/Soma_to_UFSC/public/manifest.json",
-  "version": "1.0.0"
+  ]
 }
