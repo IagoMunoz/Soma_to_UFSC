@@ -18,8 +18,10 @@ function App() {
           const installingWorker = registration.installing;
           installingWorker.onstatechange = () => {
             if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // Um novo service worker está instalado e uma atualização está disponível
-              setIsVisible(true); // Aqui você deve definir a lógica para mostrar o botão
+              // Verificar se uma atualização está realmente disponível
+              if (registration.waiting) {
+                setIsVisible(true); // Mostrar o botão somente se uma atualização estiver disponível
+              }
             }
           };
         };
@@ -29,6 +31,7 @@ function App() {
       });
     }
   }, []);
+  
 
   useEffect(() => {
     const savedVisibility = localStorage.getItem('isVisible');
