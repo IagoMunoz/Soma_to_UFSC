@@ -1,52 +1,51 @@
-.App {
+import styled from 'styled-components';
+
+export const AppView = styled.div`
   display: flex;
   flex-direction: column;
   height: 95vh;
   margin: 0;
   overflow: hidden;
   text-align: center;
-}
+`;
 
-.App-logo {
+export const AppLogo = styled.img`
   width: 128px;
   height: 128px;
   cursor: pointer;
   border: 2px solid #000000;
   border-radius: 25%;
-}
-@media (max-width: 720px){
-  .App-logo {
+
+@media (max-width: 720px) {
     width: 48px;
     height: 48px;
-  }
 }
+`;
 
-.App-intro {
+export const NavbarTxt = styled.div`
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 14px;
   text-align: justify;
   margin: 0 30px;
   overflow: hidden;
-}
+`;
 
-.App-navbar {
+export const AppNavbar = styled.div`
   background-color: #ffffff;
-
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12px 0;
-}
-@media (max-width: 720px){
-  .App-navbar {
-    padding: 0px 0;
-  }
-}
 
-.topnavbar {
+@media (max-width: 720px) {
+    padding: 0px 0;
+}
+`;
+
+export const Topnavbar = styled.div`
   background-color: #ffffff;
   flex: 0 0 auto;
   display: flex;
@@ -56,9 +55,9 @@
   padding: 12px 0;
   margin-left: 16%;
   margin-right: 16%;
-}
+`;
 
-.botnavbar {
+export const Botnavbar = styled.div`
   background-color: #ffffff;
   flex: 0 0 auto;
   display: flex;
@@ -68,9 +67,9 @@
   padding: 12px 0;
   margin-left: 13%;
   margin-right: 13%;
-}
+`;
 
-.App-inter {
+export const AppInter = styled.div`
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
@@ -79,36 +78,22 @@
   margin: 0 12px;
   box-sizing: border-box;
   overflow: hidden;
-}
-@media (max-width: 720px){
-  .App-inter {
+
+@media (max-width: 720px) {
     align-items: flex-start;
-  }
 }
+`;
 
-
-
-.App-quadro {
+export const AppQuadro = styled.div`
   margin: 12px;
   border: 2px solid #000000;
   border-radius: 6%;
   padding: 15px;
   box-shadow: inset 0 0 0 2px #FFF;
   box-sizing: border-box;
-}
+`;
 
-.App-quadro-result {
-  margin: 12px;
-  margin-top: 25%;
-  margin-bottom: 30%;
-  border: 2px solid #000000;
-  border-radius: 6%;
-  padding: 15px;
-  box-shadow: inset 0 0 0 2px #FFF;
-  box-sizing: border-box;
-}
-
-.App-input, .App-result {
+export const AppField = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -117,67 +102,40 @@
   font-size: 24px;
   margin: 2% 0;
   padding: 10px;
+
+@media (max-width: 720px) {
+    font-size: 16px;
 }
+`;
 
-
-.input {
+export const InputField = styled.input`
   font-family: 'Courier New', serif;
-  font-weight: bold;
+  font-weight:bold;
   font-size: 24px;
   text-align: center;
   border-radius: 12px;
   margin: 8px 15%;
-}
 
-.input-button {
-  font-family: 'Courier New', serif;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-  border-radius: 12px;
-  margin-right: 25%;
-  margin-left: 25%;
-}
-
-.input-button2 {
-  font-family: 'Courier New', serif;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-  border-radius: 12px;
-  margin-right: 25%;
-  margin-left: 25%;
-}
-
-@media (max-width: 720px){
-  .App-input, .App-result, .input, .input-button, .input-button2 {
+@media (max-width: 720px) {
     font-size: 16px;
-  }
 }
+`;
 
-.upbtdiv {
-  display: flex;
-  justify-content: center;
-}
-
-.input-button3 {
+export const InputButton = styled.button`
   font-family: 'Courier New', serif;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight:bold;
+  font-size: 24px;
   text-align: center;
   border-radius: 12px;
   margin-right: 25%;
   margin-left: 25%;
-  margin-bottom: 12px;
-  display: none;
-}
-@media (max-width: 480px){
-  .input-button3 {
-    display: flex;
-  }
-}
 
-.footer {
+@media (max-width: 720px) {
+    font-size: 16px;
+}
+`;
+
+export const Footer = styled.div`
   background-color: #000000;
   color: #ffffff;
   text-align: center;
@@ -186,9 +144,9 @@
   left: 0;
   bottom: 0;
   width: 100%;
-}
+`;
 
-.ttfoot {
+export const FooterTxt = styled.a`
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 16px;
@@ -196,5 +154,4 @@
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
-  
-}
+`;

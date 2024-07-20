@@ -1,8 +1,11 @@
 
 
 import logo from './logo.png';
-import './App.css';
 import React, { useState, useRef, useEffect } from 'react';
+import {
+  AppView, AppLogo, NavbarTxt, AppNavbar, Topnavbar, Botnavbar, AppInter,
+  AppQuadro, AppField, InputField, InputButton, Footer, FooterTxt
+} from './App-styled.jsx';
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
@@ -107,19 +110,19 @@ function App() {
         let P = (NP - (NTPC - (NPC - NPI))) / NP;
         let pREdondo = P.toFixed(2);
         if (pREdondo === "1.00") {
-          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Nota cheia, Mandou bem!</p>
+          strResu = <AppField>Resultado: {pREdondo}<br></br>Nota cheia, Mandou bem!</AppField>
         } else {
-          strResu = <p class="App-input">Resultado: {pREdondo}<br></br>Parabéns, cada décimo importa!!!</p>;
+          strResu = <AppField>Resultado: {pREdondo}<br></br>Parabéns, cada décimo importa!!!</AppField>;
         }
       } else if (NPC === NPI) {
-        strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</p>;
+        strResu = <AppField>Resultado 0. A quantidade de<br></br>itens incorretos se iguala a de corretos.</AppField>;
       } else {
-        strResu = <p class="App-input">Resultado 0. A quantidade de<br></br>itens incorretos supera a de corretos.</p>;
+        strResu = <AppField>Resultado 0. A quantidade de<br></br>itens incorretos supera a de corretos.</AppField>;
       }
       setResult(strResu);
       setShowResults(true);
     } else {
-      strResu = <p class="App-input">Erro: Um ou mais valores<br></br>se encontrão fora dos limites.</p>
+      strResu = <AppField>Erro: Um ou mais valores<br></br>se encontrão fora dos limites.</AppField>
       setResult(strResu);
       setShowResults(true);
     }
@@ -130,55 +133,55 @@ function App() {
   };
 
   return (
-    <app class="App">
-      <navbar className="App-navbar">
-        <topnavbar className="topnavbar">
-          <img src={logo} className="App-logo" alt="logo" onClick={toggleTextVisibility}
-            style={{ cursor: 'pointer' }}></img>
-          {isVisible && <p class="App-intro">Clique na logo para ocultar os textos.<br></br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular</p>}
-        </topnavbar>
-        <botnavbar className="botnavbar">
-          {isVisible && <p class="App-intro">Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
+    <AppView>
+      <AppNavbar>
+        <Topnavbar>
+          <AppLogo src={logo} alt="logo" onClick={toggleTextVisibility}
+            style={{ cursor: 'pointer' }}></AppLogo>
+          {isVisible && <NavbarTxt>Clique na logo para ocultar os textos.<br></br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular</NavbarTxt>}
+        </Topnavbar>
+        <Botnavbar>
+          {isVisible && <NavbarTxt>Aplicação PWA com REACT simples, feita para estudantes poderem calcular a nota de questões
             de somatório estilo UFSC. É possível baixar o site para usar como um APP no seu telefone.<br></br>
-              </p>}
-        </botnavbar>
-      </navbar>
-      <interface class="App-inter">
+              </NavbarTxt>}
+        </Botnavbar>
+      </AppNavbar>
+      <AppInter>
         {!showResults ? (
-          <quadro class="App-quadro">
-            <div class="App-input">
+          <AppQuadro>
+            <AppField>
               <label htmlFor="numItens">Número de itens:</label>
-              <input class="input" type="number" id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
-            </div>
-            <div class="App-input">
+              <InputField id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
+            </AppField>
+            <AppField>
               <label htmlFor="somaAlternativas">Soma dos itens corretos:</label>
-              <input class="input" type="number" id="somaAlternativas" name="somaAlternativas" min="1" max="99" pattern="[0-9]*" ref={somaAlternativasRef} onKeyDown={(e) => handleEnterKey(e, somaAssinaladosRef)} />
-            </div>
-            <div class="App-input">
+              <InputField type="number" id="somaAlternativas" name="somaAlternativas" min="1" max="99" pattern="[0-9]*" ref={somaAlternativasRef} onKeyDown={(e) => handleEnterKey(e, somaAssinaladosRef)} />
+            </AppField>
+            <AppField>
               <label htmlFor="somaAssinalados">Soma dos itens assinalados:</label>
-              <input class="input" type="number" id="somaAssinalados" name="somaAssinalados" min="1" max="99" pattern="[0-9]*" ref={somaAssinaladosRef} onKeyDown={(e) => handleEnterKey(e, null, calculate)} />
-            </div>
-            <div class="App-input">
-              <button class="input-button" onClick={calculate}>
+              <InputField type="number" id="somaAssinalados" name="somaAssinalados" min="1" max="99" pattern="[0-9]*" ref={somaAssinaladosRef} onKeyDown={(e) => handleEnterKey(e, null, calculate)} />
+            </AppField>
+            <AppField>
+              <InputButton onClick={calculate}>
                 Calcular
-              </button>
-            </div>
-          </quadro>
+              </InputButton>
+            </AppField>
+          </AppQuadro>
         ) : (
-          <quadro class="App-quadro-result">
+          <AppQuadro>
             {result}
-            <div class="App-input">
-              <button class="input-button2" ref={retryButtonRef} onClick={resetForm} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
+            <AppField>
+              <InputButton ref={retryButtonRef} onClick={resetForm} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
                 Calcular <br></br> novamente
-              </button>
-            </div>
-          </quadro>
+              </InputButton>
+            </AppField>
+          </AppQuadro>
         )}
-      </interface>
-      <footer class ="footer">
-          <a class = "ttfoot" href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</a>
-        </footer>
-    </app>
+      </AppInter>
+      <Footer>
+          <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</FooterTxt>
+        </Footer>
+    </AppView>
   );
 }
 export default App;
