@@ -26,10 +26,13 @@ export const AppLogo = styled.img`
 export const NavbarTxt = styled.a`
   font-family: 'Courier New', serif;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 16px;
   text-align: justify;
   margin: 0 30px;
   
+  @media (max-width: 720px) {
+    font-size: 12px;
+  }
 `;
 
 export const AppNavbar = styled.div`
@@ -42,7 +45,7 @@ export const AppNavbar = styled.div`
   padding: 12px 0;
 
 @media (max-width: 720px) {
-    padding: 0px 0;
+    padding: 6px 0;
 }
 `;
 
