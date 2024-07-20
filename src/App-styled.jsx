@@ -56,6 +56,11 @@ export const Topnavbar = styled.div`
   padding: 12px 0;
   margin-left: 16%;
   margin-right: 16%;
+
+  @media (max-width: 720px) {
+  margin-left: 8%;
+  margin-right: 8%;
+}
 `;
 
 export const Botnavbar = styled.div`
@@ -68,6 +73,11 @@ export const Botnavbar = styled.div`
   padding: 12px 0;
   margin-left: 13%;
   margin-right: 13%;
+
+  @media (max-width: 720px) {
+  margin-left: 0%;
+  margin-right: 0%;
+}
 `;
 
 export const AppInter = styled.div`

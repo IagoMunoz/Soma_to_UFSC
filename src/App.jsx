@@ -188,7 +188,7 @@ function App() {
         </AppUpdateTxt>
       </AppUpdate>
       <Footer>
-          <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</FooterTxt>
+          <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz-Soma_to_UFSC</FooterTxt>
         </Footer>
     </AppView>
   );
