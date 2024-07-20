@@ -4,7 +4,7 @@ import logo from './logo.png';
 import React, { useState, useRef, useEffect } from 'react';
 import {
   AppView, AppLogo, NavbarTxt, AppNavbar, Topnavbar, Botnavbar, AppInter,
-  AppQuadro, AppField, InputField, InputButton, Footer, FooterTxt
+  AppQuadro, AppField, InputField, InputButton, Footer, FooterTxt, AppUpdate, AppUpdateTxt
 } from './App-styled.jsx';
 
 function App() {
@@ -178,6 +178,15 @@ function App() {
           </AppQuadro>
         )}
       </AppInter>
+      <AppUpdate>
+        <AppUpdateTxt>Por favor, ao entrar no<br></br>
+                      aplicativo, arraste para<br></br>
+                      baixo, pois a autoatualização<br></br>
+                      ainda não está implementada.<br></br>
+                      Quando este aviso sumir, a<br></br>
+                      autoatualização estará funcionando.
+        </AppUpdateTxt>
+      </AppUpdate>
       <Footer>
           <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz - Soma_to_UFSC - 2024</FooterTxt>
         </Footer>

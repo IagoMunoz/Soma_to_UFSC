@@ -74,13 +74,14 @@ export const AppInter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   margin: 0 12px;
   box-sizing: border-box;
   overflow: hidden;
 
 @media (max-width: 720px) {
     align-items: flex-start;
+    margin-bottom: 10%;
 }
 `;
 
@@ -154,4 +155,31 @@ export const FooterTxt = styled.a`
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
+`;
+
+export const AppUpdate = styled.div`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  
+  overflow: hidden;
+  margin-left: 18%;
+  margin-right: 18%;
+
+@media (max-width: 720px) {
+    display: flex;
+  }
+`;
+
+export const AppUpdateTxt = styled.div`
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000000;
+  overflow: hidden;
+  font-family: 'Courier New', serif;
+  font-weight:bold;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 8px;
 `;
