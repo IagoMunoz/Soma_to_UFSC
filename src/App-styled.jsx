@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const AppView = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,13 +23,13 @@ export const AppLogo = styled.img`
 }
 `;
 
-export const NavbarTxt = styled.div`
+export const NavbarTxt = styled.a`
   font-family: 'Courier New', serif;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   text-align: justify;
   margin: 0 30px;
-  overflow: hidden;
+  
 `;
 
 export const AppNavbar = styled.div`
@@ -61,7 +62,7 @@ export const Botnavbar = styled.div`
   background-color: #ffffff;
   flex: 0 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12px 0;
