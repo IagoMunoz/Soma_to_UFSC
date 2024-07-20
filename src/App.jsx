@@ -150,7 +150,7 @@ function App() {
         {!showResults ? (
           <AppQuadro>
             <AppField>
-              <label htmlFor="numItens">Número de iiiiiiiiiiiiiitens:</label>
+              <label htmlFor="numItens">Número de tens:</label>
               <InputField id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
             </AppField>
             <AppField>
