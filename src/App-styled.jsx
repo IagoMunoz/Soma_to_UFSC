@@ -180,7 +180,7 @@ export const AppUpdate = styled.div`
   margin-left: 18%;
   margin-right: 18%;
 
-@media (max-width: 720px) {
+@media (max-width: 420px) {
     display: flex;
   }
 `;
