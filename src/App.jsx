@@ -37,9 +37,11 @@ function App() {
     }
   }, [showResults]);
 
+
+  // funçao nova do pwa
   useEffect(() => {
     const handleVisibilityChange = () => {
-      console.log("Visibility changed");
+
       if (document.visibilityState === "visible") {
         console.log("APP resumed");
         window.location.reload();
@@ -167,7 +169,7 @@ function App() {
         {!showResults ? (
           <AppQuadro>
             <AppField>
-              <label htmlFor="numItens">Número de teste teste teste itens:</label>
+              <label htmlFor="numItens">Número de itens:</label>
               <InputField id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
             </AppField>
             <AppField>
