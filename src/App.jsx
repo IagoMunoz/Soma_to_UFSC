@@ -37,9 +37,26 @@ function App() {
     }
   }, [showResults]);
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      console.log("Visibility changed");
+      if (document.visibilityState === "visible") {
+        console.log("APP resumed");
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   const toggleTextVisibility = () => {
     setIsVisible(!isVisible); // Alterna a visibilidade dos textos
   };
+
 
   const handleEnterKey = (event, nextRef, action) => {
     if (event.key === 'Enter' || event.keyCode === 13) {
