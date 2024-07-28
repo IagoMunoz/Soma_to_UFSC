@@ -6,6 +6,7 @@ import {
   AppView, AppLogo, NavbarTxt, AppNavbar, Topnavbar, Botnavbar, AppInter,
   AppQuadro, AppField, InputField, InputButton, Footer, FooterTxt, AppUpdate, AppUpdateTxt
 } from './App-styled.jsx';
+import { isFirstOpen, setNotRecentOpened } from './index.js';
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
@@ -39,21 +40,6 @@ function App() {
 
 
   // funçao nova do pwa
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-
-      if (document.visibilityState === "visible") {
-        console.log("APP resumed");
-        window.location.reload();
-      }
-    };
-
-    window.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
 
   const toggleTextVisibility = () => {
     setIsVisible(!isVisible); // Alterna a visibilidade dos textos
@@ -70,6 +56,10 @@ function App() {
       }
     }
   };
+
+  function sneakReload() {
+    window.location.reload();
+  }
 
   function converterParaBinario(numero, comprimento) {
     let binario = numero.toString(2);
@@ -150,7 +140,7 @@ function App() {
   const resetForm = () => {
     setShowResults(false);
   };
-
+    
   return (
     <AppView>
       <AppNavbar>
@@ -170,7 +160,7 @@ function App() {
           <AppQuadro>
             <AppField>
               <label htmlFor="numItens">Número de itens:</label>
-              <InputField id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
+              <InputField type="number" id="numItens" name="numItens" min="1" max="7" pattern="[0-9]*" ref={numItensRef} onKeyDown={(e) => handleEnterKey(e, somaAlternativasRef)} />
             </AppField>
             <AppField>
               <label htmlFor="somaAlternativas">Soma dos itens corretos:</label>
@@ -190,25 +180,21 @@ function App() {
           <AppQuadro>
             {result}
             <AppField>
-              <InputButton ref={retryButtonRef} onClick={resetForm} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
+              <InputButton ref={retryButtonRef} onClick={(resetForm, sneakReload)} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
                 Calcular <br></br> novamente
               </InputButton>
             </AppField>
           </AppQuadro>
         )}
       </AppInter>
-      <AppUpdate>
-        <AppUpdateTxt>Por favor, ao entrar no<br></br>
-                      aplicativo, arraste para<br></br>
-                      baixo, pois a autoatualização<br></br>
-                      ainda não está implementada.<br></br>
-                      Quando este aviso sumir, a<br></br>
-                      autoatualização estará funcionando.
-        </AppUpdateTxt>
-      </AppUpdate>
+        {isVisible && <NavbarTxt>
+        Clique na logo para ocultar os textos.<br></br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular
+        </NavbarTxt>}
       <Footer>
-          <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Iago Muñoz-Soma_to_UFSC</FooterTxt>
-        </Footer>
+        <FooterTxt onClick={toggleTextVisibility} style={{ cursor: 'pointer' }} >Sobre o App</FooterTxt>
+        <FooterTxt></FooterTxt>
+        <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Github/Soma_to_UFSC</FooterTxt>
+      </Footer>
     </AppView>
   );
 }

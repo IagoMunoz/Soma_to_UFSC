@@ -89,7 +89,7 @@ export const AppInter = styled.div`
   justify-content: center;
   align-items: center;
   
-  margin: 0 12px;
+  margin: 0 0px;
   box-sizing: border-box;
   overflow: hidden;
 
@@ -153,22 +153,27 @@ export const InputButton = styled.button`
 export const Footer = styled.div`
   background-color: #000000;
   color: #ffffff;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
   padding: 8px;
   position: fixed;
-  left: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  @media (max-width: 450px) {
+    justify-content: space-between;
+  }  
 `;
 
 export const FooterTxt = styled.a`
   font-family: 'Courier New', serif;
   font-weight: bold;
   font-size: 16px;
-  text-align: center;
   color: #fff;
   text-decoration: none;
-  margin: 0 10px;
+  margin-right: 18px;
 `;
 
 export const AppUpdate = styled.div`
