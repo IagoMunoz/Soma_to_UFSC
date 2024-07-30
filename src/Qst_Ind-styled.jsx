@@ -155,7 +155,7 @@ export const Footer = styled.div`
   color: #ffffff;
   display: flex;
   justify-content: space-evenly;
-  align-items: stretch;
+  align-items: center;
   padding: 8px;
   position: fixed;
   bottom: 0;

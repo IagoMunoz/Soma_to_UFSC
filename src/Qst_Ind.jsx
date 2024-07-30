@@ -5,8 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   AppView, AppLogo, NavbarTxt, AppNavbar, Topnavbar, Botnavbar, AppInter,
   AppQuadro, AppField, InputField, InputButton, Footer, FooterTxt, AppUpdate, AppUpdateTxt
-} from './App-styled.jsx';
-import { isFirstOpen, setNotRecentOpened } from './index.js';
+} from './Qst_Ind-styled.jsx';
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
@@ -191,7 +190,7 @@ function App() {
         Clique na logo para ocultar os textos.<br></br>Você pode operar tudo apenas clicando enter para avançar o campo e calcular
         </NavbarTxt>}
       <Footer>
-        <FooterTxt onClick={toggleTextVisibility} style={{ cursor: 'pointer' }} >Sobre o App</FooterTxt>
+        <FooterTxt onClick={toggleTextVisibility} style={{ cursor: 'pointer' }} >Sobre/ Como instalar</FooterTxt>
         <FooterTxt></FooterTxt>
         <FooterTxt href="https://github.com/IagoMunoz/Soma_to_UFSC">Github/Soma_to_UFSC</FooterTxt>
       </Footer>
