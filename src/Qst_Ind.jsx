@@ -179,7 +179,7 @@ function App() {
           <AppQuadro>
             {result}
             <AppField>
-              <InputButton ref={retryButtonRef} onClick={(resetForm, sneakReload)} onKeyDown={(e) => handleEnterKey(e, null, resetForm)}>
+              <InputButton ref={retryButtonRef} onClick={(resetForm, sneakReload)} onKeyDown={sneakReload}>
                 Calcular <br></br> novamente
               </InputButton>
             </AppField>
